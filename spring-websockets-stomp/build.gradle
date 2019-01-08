@@ -11,7 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -19,17 +19,52 @@ group = 'com.nerchain'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+compileJava.options.annotationProcessorGeneratedSourcesDirectory = file("${buildDir}/generated/source/apt")
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+idea {
+    module {
+        outputDir = file("$buildDir/out/")
+        testOutputDir = file("$buildDir/test")
+    }
+}
+
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-security')
-    implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation('org.springframework.boot:spring-boot-starter-websocket')
-    implementation('org.springframework.session:spring-session-core')
+
+    implementation('org.springframework.boot:spring-boot-starter-web') // web模块
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+
+    implementation('org.springframework.boot:spring-boot-starter-security') // 安全模块
+    implementation('org.springframework.security:spring-security-messaging')
+
+    implementation('org.springframework.boot:spring-boot-starter-websocket') // websocket
+
+    implementation('org.springframework.session:spring-session-data-redis')// spring session data redis 已支持认证多项目共享
+    implementation('io.lettuce:lettuce-core')
+
+
+    /**
+     * 代理服务需要增加的包
+     *
+     * 参考 (https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-handle-broker-relay)
+     */
+    implementation('io.projectreactor.netty:reactor-netty')
+    implementation('io.netty:netty-all')
+
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('org.springframework.security:spring-security-test')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
+
 }
