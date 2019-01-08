@@ -1,21 +1,16 @@
-##Spring WebSockets STOMP 代理模式集成 RabbitMQ
+## Spring WebSockets STOMP 代理模式集成 RabbitMQ
 ----
-
-###环境
-> [java 11](https://openjdk.java.net/projects/jdk/11/)
-
-> [gradle](https://gradle.org/)
-
-> [spring boot 2.1.1](https://spring.io/projects/spring-boot)
-
-> [RabbitMQ 服务](https://www.rabbitmq.com/#getstarted)
->>需要[STOMP](https://www.rabbitmq.com/stomp.html)插件安装
-
->>如果你需要定时消息,需要安装 [rabbitmq_delayed_message_exchange](https://www.rabbitmq.com/community-plugins.html#rabbitmq_delayed_message_exchange)
-插件
+### 环境
+> [java 11](https://openjdk.java.net/projects/jdk/11/)  
+  [gradle](https://gradle.org/)  
+  [spring boot 2.1.1](https://spring.io/projects/spring-boot)  
+  [RabbitMQ 服务](https://www.rabbitmq.com/#getstarted)  
+    需要[STOMP](https://www.rabbitmq.com/stomp.html)插件安装  
+    如果你需要定时消息,需要安装 [rabbitmq_delayed_message_exchange](https://www.rabbitmq.com/community-plugins.html#rabbitmq_delayed_message_exchange)
+    插件
 ---
 
-###简要说明
+### 简要说明
 1. 依赖包安装:
     ```implementation('org.springframework.boot:spring-boot-starter-web') // web模块
      implementation ('org.springframework.boot:spring-boot-starter-thymeleaf')
@@ -76,7 +71,7 @@
           }
       }
       ```
-   AbstractSessionWebSocketMessageBrokerConfigurer启用Session的管理,它很简单就是管理用户认证后Session的生命周期.
+     AbstractSessionWebSocketMessageBrokerConfigurer启用Session的管理,它很简单就是管理用户认证后Session的生命周期.
     
 3. Sockets安全配置类[SocketSecurityConfig](src/main/java/com/nerchain/springwebsocketsstomp/config/SocketSecurityConfig.java)
     ```@Configuration
@@ -171,12 +166,12 @@
            }
        
        }
-       ```
+      ```
 ### 关于
 > 我没有写客户端实现,由于时间问题,暂时没有实现.
 这是一个最基本的代理服务链接RabbitMQ的实现,它可以跨域,也集成了安全,重要的知识点都涵盖了.
 关于定时这个消息是rabbitmq_delayed_message_exchange这个插件实现的,后面我会详细介绍.
 #### 对于不明白的可以加我QQ询问.
 ### 示例代码 [github](https://github.com/vnobo/guides/tree/master/spring-websockets-stomp) [gitee](https://gitee.com/vno/guides/tree/master/spring-websockets-stomp)
-###作者
+### 作者
 > 云舒 QQ:5199840 
