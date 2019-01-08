@@ -23,7 +23,7 @@
      implementation('org.springframework.session:spring-session-data-redis')// spring session data redis 已支持认证多项目共享
      implementation('io.lettuce:lettuce-core')
      ```
-2. 代理设置类[SessionSocketsStompConfig](src/main/java/com/nerchain/springwebsocketsstomp/config/SessionSocketsStompConfig.java)
+2. 代理设置类[SessionSocketsStompConfig](https://gitee.com/vno/guides/tree/master/spring-websockets-stomp/src/main/java/com/nerchain/springwebsocketsstomp/config/SessionSocketsStompConfig.java)
    ```
       @Configuration
       @EnableWebSocketMessageBroker
@@ -73,7 +73,7 @@
       ```
      AbstractSessionWebSocketMessageBrokerConfigurer启用Session的管理,它很简单就是管理用户认证后Session的生命周期.
     
-3. Sockets安全配置类[SocketSecurityConfig](src/main/java/com/nerchain/springwebsocketsstomp/config/SocketSecurityConfig.java)
+3. Sockets安全配置类[SocketSecurityConfig](https://gitee.com/vno/guides/tree/master/spring-websockets-stomp/src/main/java/com/nerchain/springwebsocketsstomp/config/SocketSecurityConfig.java)
     ```@Configuration
        public class SocketSecurityConfig extends AbstractSecurityWebSocketMessageBrokerConfigurer {
        
