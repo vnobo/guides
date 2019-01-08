@@ -88,7 +88,7 @@ public class SocketSecurityConfig extends AbstractSecurityWebSocketMessageBroker
     }
 
     /**
-     * sockets 权限消息
+     * sockets 消息权限规则声明
      *
      * @param messages 消息体
      */
