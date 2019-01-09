@@ -1,43 +1,8 @@
-buildscript {
-    ext {
-        springBootVersion = '2.1.1.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
-}
 
-apply plugin: 'java'
-apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-group = 'com.nerchain'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
-compileJava.options.annotationProcessorGeneratedSourcesDirectory = file("${buildDir}/generated/source/apt")
-
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-idea {
-    module {
-        outputDir = file("$buildDir/out/")
-        testOutputDir = file("$buildDir/test")
-    }
-}
-
-repositories {
-    jcenter()
-}
-
 
 dependencies {
-
-    implementation('org.springframework.boot:spring-boot-starter-web') // web模块
+    
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
 
     implementation('org.springframework.boot:spring-boot-starter-security') // 安全模块
@@ -56,15 +21,4 @@ dependencies {
      */
     implementation('io.projectreactor.netty:reactor-netty')
     implementation('io.netty:netty-all')
-
-    runtimeOnly('org.springframework.boot:spring-boot-devtools')
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation('org.springframework.security:spring-security-test')
-}
-
-dependencyManagement {
-    imports {
-        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
-    }
-
 }

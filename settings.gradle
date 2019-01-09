@@ -1,0 +1,2 @@
+rootProject.name = 'guides'
+include 'spring-websockets-stomp', 'bootiful-alibaba'
