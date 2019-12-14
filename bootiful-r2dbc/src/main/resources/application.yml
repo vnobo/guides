@@ -5,3 +5,4 @@ spring:
     username: postgres
     password: q1w2e3..
     initialization-mode: always
+

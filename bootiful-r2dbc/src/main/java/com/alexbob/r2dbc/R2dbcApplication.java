@@ -1,10 +1,13 @@
 package com.alexbob.r2dbc;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.r2dbc.convert.R2dbcConverter;
+import org.springframework.data.r2dbc.core.DatabaseClient;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -24,7 +27,7 @@ public class R2dbcApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(UserRepository repository) {
+    public CommandLineRunner demo(UserRepository repository,DatabaseClient databaseClient) {
         return (args) -> {
             // save a few customers
             repository.saveAll(Arrays.asList(new User("Jack", "Bauer"),
