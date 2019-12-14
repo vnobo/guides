@@ -1,2 +1,5 @@
-rootProject.name = 'guides'
-include 'spring-websockets-stomp', 'bootiful-alibaba'
+rootProject.name = 'alexbob-guides'
+include 'bootiful-alibaba'
+include 'bootiful-r2dbc'
+include 'bootiful-sockets'
+
