@@ -2,4 +2,3 @@ rootProject.name = 'alexbob-guides'
 include 'bootiful-alibaba'
 include 'bootiful-r2dbc'
 include 'bootiful-sockets'
-

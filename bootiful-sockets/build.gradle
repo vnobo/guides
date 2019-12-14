@@ -1,29 +1,8 @@
-plugins {
-    id 'org.springframework.boot' version '2.2.2.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-    id 'java'
-}
-
-group = 'com.alexbob'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
-configurations {
-    developmentOnly
-    runtimeClasspath {
-        extendsFrom developmentOnly
-    }
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
-repositories {
-    mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' }
-}
+apply plugin: 'org.springframework.boot'
 
 dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
 
     implementation('org.springframework.boot:spring-boot-starter-security') // 安全模块
@@ -41,31 +20,5 @@ dependencies {
      */
     implementation('io.projectreactor.netty:reactor-netty')
     implementation('io.netty:netty-all')
-
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-    testImplementation 'io.projectreactor:reactor-test'
-}
-
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.boot.experimental:spring-boot-bom-r2dbc:0.1.0.M3'
-    }
-}
-
-test {
-    useJUnitPlatform()
-}
-
-dependencies {
-    
 
 }
