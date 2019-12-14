@@ -1,13 +1,14 @@
-package com.alexbob.r2dbc;
+package com.alexbob.alibaba;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BootifulR2dbcApplicationTests {
+public class SpringCloudAlibabaApplicationTests {
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
     }
 
 }
+

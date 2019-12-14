@@ -17,10 +17,10 @@ import java.util.Arrays;
  */
 @Log4j2
 @SpringBootApplication
-public class BootifulR2dbcApplication {
+public class R2dbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootifulR2dbcApplication.class, args);
+        SpringApplication.run(R2dbcApplication.class, args);
     }
 
     @Bean

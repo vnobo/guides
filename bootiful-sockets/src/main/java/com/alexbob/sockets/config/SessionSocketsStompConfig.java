@@ -1,4 +1,4 @@
-package com.nerchain.springwebsocketsstomp.config;
+package com.alexbob.sockets.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

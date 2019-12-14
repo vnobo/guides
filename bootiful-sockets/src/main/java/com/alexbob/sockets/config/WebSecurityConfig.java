@@ -1,4 +1,4 @@
-package com.nerchain.springwebsocketsstomp.config;
+package com.alexbob.sockets.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

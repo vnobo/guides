@@ -1,13 +1,13 @@
-package com.nerchain.springwebsocketsstomp;
+package com.alexbob.alibaba;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringWebsocketsStompApplication {
+public class AlibabaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringWebsocketsStompApplication.class, args);
+        SpringApplication.run(AlibabaApplication.class, args);
     }
 
 }
