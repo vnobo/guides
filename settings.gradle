@@ -1,4 +1,4 @@
-rootProject.name = 'alexbob-guides'
+rootProject.name = 'guides'
 include 'bootiful-alibaba'
 include 'bootiful-r2dbc'
 include 'bootiful-sockets'

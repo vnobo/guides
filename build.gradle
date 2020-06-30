@@ -1,6 +1,6 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.2.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
 allprojects {
@@ -14,9 +14,7 @@ allprojects {
         maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/' }
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         maven { url 'https://repo.spring.io/libs-snapshot-local' }
-        mavenLocal()
         mavenCentral()
-        jcenter()
     }
 
 }
@@ -31,20 +29,14 @@ subprojects {
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '11'
 
-    idea {
-        module {
+    idea.module {
             outputDir = file("$buildDir/out/")
             testOutputDir = file("$buildDir/test")
         }
-    }
 
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
     configurations {
-        developmentOnly
-        runtimeClasspath {
-            extendsFrom developmentOnly
-        }
         compileOnly {
             extendsFrom annotationProcessor
         }
@@ -53,11 +45,8 @@ subprojects {
     dependencies {
 
         compileOnly 'org.projectlombok:lombok'
-
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
         annotationProcessor 'org.projectlombok:lombok'
-
-        developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
