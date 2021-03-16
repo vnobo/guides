@@ -1,19 +1,20 @@
 plugins {
-    id 'org.springframework.boot' version '2.3.1.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id "org.springframework.boot" version "2.4.3"
+    id "io.spring.dependency-management" version "1.0.10.RELEASE"
 }
 
 allprojects {
 
+    group = "com.alexbob"
+    version = "0.0.1-SNAPSHOT"
+
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/public' }
-        maven { url 'https://maven.aliyun.com/repository/spring/' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
-        maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/' }
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-        maven { url 'https://repo.spring.io/libs-snapshot-local' }
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://maven.aliyun.com/repository/spring/" }
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+        maven { url "https://maven.aliyun.com/repository/spring-plugin" }
+        jcenter()
         mavenCentral()
     }
 
@@ -21,20 +22,18 @@ allprojects {
 
 subprojects {
 
-    apply plugin: 'java'
-    apply plugin: 'idea'
-    apply plugin: 'io.spring.dependency-management'
+    apply plugin: "java"
+    apply plugin: "idea"
+    apply plugin: "io.spring.dependency-management"
 
-    group = 'com.alexbob'
-    version = '0.0.1-SNAPSHOT'
-    sourceCompatibility = '11'
+    sourceCompatibility = 11
 
     idea.module {
             outputDir = file("$buildDir/out/")
             testOutputDir = file("$buildDir/test")
         }
 
-    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
 
     configurations {
         compileOnly {
@@ -42,16 +41,34 @@ subprojects {
         }
     }
 
+    ext {
+        set("hutoolVersion", "5.5.+")
+        set("weixinVersion", "4.0.+")
+        set("hanlpVersion", "portable-1.7.+")
+        set("springCloudVersion", "2020.0.+")
+        set("springCloudAlibabaVersion", "2.2.+")
+        set("springfoxSwagger2Version", "3.0.+")
+    }
+
     dependencies {
+        implementation "io.springfox:springfox-boot-starter:${springfoxSwagger2Version}"
 
-        compileOnly 'org.projectlombok:lombok'
-        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-        annotationProcessor 'org.projectlombok:lombok'
+        implementation "org.springframework.boot:spring-boot-starter-actuator"
 
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        compileOnly "org.projectlombok:lombok"
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+        annotationProcessor "org.projectlombok:lombok"
+
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation "io.projectreactor:reactor-test"
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
         }
-        testImplementation 'io.projectreactor:reactor-test'
     }
 
     test {
